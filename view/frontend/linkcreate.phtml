@@ -1,6 +1,29 @@
-<h1>
+
 	<?php 
-	echo $this->getLinkCreate($prodId); 
+
+	$id = $this->getLinkCreate($prodId);
+
+	$_product = $block->getProductById($id);
+
+	echo $_product->getEntityId();
+	echo '<br />';
+	echo $_product->getName();
+
+	
 	?>
-</h1>
+<?php
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+	$listBlock = $objectManager->get('\Magento\Catalog\Block\Product\ListProduct');
+
+	$addToCartUrl =  $listBlock->getAddToCartUrl($product);
+?>
+ <form data-role="tocart-form" action="<?php echo $addToCartUrl; ?>" method="post">
+    <?php echo $block->getBlockHtml('formkey')?>
+       <button type="submit"
+               title="Add to Cart"
+               class="action tocart primary">
+               <span>Add to Cart</span>
+        </button>
+ </form>
 
