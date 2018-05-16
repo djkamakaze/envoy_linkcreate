@@ -1,5 +1,5 @@
 
-	<?php 
+<?php 
 
 	$id = $this->getLinkCreate($prodId);
 
@@ -10,13 +10,11 @@
 	echo $_product->getName();
 
 	
-	?>
-<?php
 	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 
 	$listBlock = $objectManager->get('\Magento\Catalog\Block\Product\ListProduct');
 
-	$addToCartUrl =  $listBlock->getAddToCartUrl($product);
+	$addToCartUrl =  $listBlock->getAddToCartUrl($_product);
 ?>
  <form data-role="tocart-form" action="<?php echo $addToCartUrl; ?>" method="post">
     <?php echo $block->getBlockHtml('formkey')?>
